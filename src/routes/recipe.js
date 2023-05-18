@@ -4,12 +4,19 @@ const express = require('express');
 
 const router = express.Router();
 
-const { recipeModel } = require('../models');
+const { recipeModel, ingredientModel } = require('../models');
 
 
 // Get All Records
 router.get('/recipe', async (req, res, next) => {
   let allRecipes = await recipeModel.findAll();
+
+  res.status(200).send(allRecipes);
+});
+
+// Get All Records
+router.get('/recipeWithIngredients', async (req, res, next) => {
+  let allRecipes = await recipeModel.findAll({include: {model: ingredientModel}});
 
   res.status(200).send(allRecipes);
 });
