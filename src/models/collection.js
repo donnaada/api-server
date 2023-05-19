@@ -16,7 +16,6 @@ class Collection {
     }
   }
 
-
   async find(params) {
     try {
       if (params) {
@@ -24,14 +23,36 @@ class Collection {
         return record;
       } else {
         let records = await this.model.findAll();
-        return records
+        return records;
       }
-
     } catch (error) {
       console.error(error);
       return error;
     }
   }
+
+  async update(data, params) {
+    try {
+      let record = await this.model.update(data, { where: { id: params } });
+      return record;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  }
+
+  async delete(params){
+    try {
+      let record = await this.model.destroy({ where: { id: params } });
+      return record;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  }
+
 }
+
+
 
 module.exports = Collection;

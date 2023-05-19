@@ -14,7 +14,7 @@ router.get('/recipe', async (req, res, next) => {
 
 // Get one Record
 router.get('/recipe/:id', async (req, res, next) => {
-  let singleRecipe = await recipe.findOne(req.params.id);
+  let singleRecipe = await recipe.find(req.params.id);
 
   res.status(200).send(singleRecipe);
 });
@@ -28,8 +28,7 @@ router.post('/recipe', async (req, res, next) => {
 
 //Update a record
 router.put('/recipe/:id', async (req, res, next) => {
-  await recipe.update(req.body, { where: { id: req.params.id } });
-
+  await recipe.update(req.body,req.params.id);
   let returnUpdatedDB = await recipe.find(req.params.id);
 
   res.status(200).send(returnUpdatedDB);
@@ -37,12 +36,8 @@ router.put('/recipe/:id', async (req, res, next) => {
 
 //Delete a record
 router.delete('/recipe/:id', async (req, res, next) => {
-
-  recipe.destroy({
-    where: { id: req.params.id },
-  });
-
-  let returnDeleted = await recipe.findAll({ where: { id: req.params.id } });
+  recipe.delete(req.params.id);
+  let returnDeleted = await recipe.find(req.params.id);
 
   res.status(200).send(returnDeleted);
 });
