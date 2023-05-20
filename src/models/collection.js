@@ -50,9 +50,6 @@ class Collection {
       return error;
     }
   }
-
 }
-
-
 
 module.exports = Collection;

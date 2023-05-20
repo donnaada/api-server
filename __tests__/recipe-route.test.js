@@ -50,7 +50,7 @@ describe('recipe route', () => {
   test('Get all recipes', async () => {
     let res = await request.get('/recipe');
     expect(res.status).toEqual(200);
-    expect(res.body).toEqual(expect.arrayContaining(res.body))
+    expect(res.body).toEqual(expect.arrayContaining(res.body));
   });
 
   //read a record
