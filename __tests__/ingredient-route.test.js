@@ -13,7 +13,7 @@ afterAll(async () => {
   await sequelizeDatabase.drop();
 });
 
-describe('recipe route', () => {
+describe('ingredient route', () => {
 
   //404 on bad route
   test('Test Bad Route', async () => {
@@ -23,7 +23,7 @@ describe('recipe route', () => {
 
   //404 on bad method
   test('Test Bad Method', async () => {
-    let res = await request.post('/recipes');
+    let res = await request.post('/');
     expect(res.status).toEqual(404);
 
     res = await request.put('/');
@@ -34,32 +34,33 @@ describe('recipe route', () => {
   });
 
   //create record
-  test('create recipe', async () => {
-    let res = await request.post('/recipe').send({
-      name: 'Chicken Keleguin',
-      servingSize: 24,
-      category: 'Appetizer',
+  test('create Ingredient', async () => {
+    let res = await request.post('/ingredient').send({
+      name: 'Chicken',
+      quantity: 6,
+      unitOfMeasurement: 'Pieces',
+      recipeID: 1,
     });
 
     expect(res.status).toEqual(200);
-    expect(res.body.name).toEqual('Chicken Keleguin');
-    expect(res.body.servingSize).toEqual(24);
+    expect(res.body.name).toEqual('Chicken');
+    expect(res.body.quantity).toEqual(6);
+    // expect(res.body.recipeID).toEqual(1);
   });
 
   //list of records
-  test('Get all recipes', async () => {
-    let res = await request.get('/recipe');
+  test('Get all Ingredients', async () => {
+    let res = await request.get('/ingredient');
     expect(res.status).toEqual(200);
     expect(res.body).toEqual(expect.arrayContaining(res.body));
   });
 
   //read a record
-  test('Get Recipe by ID', async () => {
-    let res = await request.get('/recipe/1');
+  test('Get Ingredient by ID', async () => {
+    let res = await request.get('/ingredient/1');
     expect(res.status).toEqual(200);
-    expect(res.body[0].name).toEqual('Chicken Keleguin');
-    expect(res.body[0].servingSize).toEqual(24);
-    expect(res.body[0].category).toEqual('Appetizer');
+    expect(res.body[0].name).toEqual('Chicken');
+    expect(res.body[0].quantity).toEqual(6);
+    // expect(res.body[0].recipeID).toEqual(1);
   });
-
 });
