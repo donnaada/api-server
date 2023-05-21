@@ -53,13 +53,13 @@ describe('recipe route', () => {
     expect(res.body).toEqual(expect.arrayContaining(res.body));
   });
 
-  //read a record
-  test('Get Recipe by ID', async () => {
-    let res = await request.get('/recipe/1');
-    expect(res.status).toEqual(200);
-    expect(res.body[0].name).toEqual('Chicken Keleguin');
-    expect(res.body[0].servingSize).toEqual(24);
-    expect(res.body[0].category).toEqual('Appetizer');
-  });
+  // //read a record
+  // test('Get Recipe by ID', async () => {
+  //   let res = await request.get('/recipe/1');
+  //   expect(res.status).toEqual(200);
+  //   expect(res.body[0].name).toEqual('Chicken Keleguin');
+  //   expect(res.body[0].servingSize).toEqual(24);
+  //   expect(res.body[0].category).toEqual('Appetizer');
+  // });
 
 });

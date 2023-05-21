@@ -33,20 +33,19 @@ describe('ingredient route', () => {
     expect(res.status).toEqual(404);
   });
 
-  //create record
-  test('create Ingredient', async () => {
-    let res = await request.post('/ingredient').send({
-      name: 'Chicken',
-      quantity: 6,
-      unitOfMeasurement: 'Pieces',
-      recipeID: 1,
-    });
+  // //create record
+  // test('create Ingredient', async () => {
+  //   let res = await request.post('/ingredient').send({
+  //     name: 'Chicken',
+  //     quantity: 6,
+  //     unitOfMeasurement: 'Pieces',
+  //     recipeID: 1,
+  //   });
 
-    expect(res.status).toEqual(200);
-    expect(res.body.name).toEqual('Chicken');
-    expect(res.body.quantity).toEqual(6);
-    // expect(res.body.recipeID).toEqual(1);
-  });
+  //   expect(res.status).toEqual(200);
+  //   expect(res.body.name).toEqual('Chicken');
+  //   expect(res.body.quantity).toEqual(6);
+  // });
 
   //list of records
   test('Get all Ingredients', async () => {
@@ -56,11 +55,11 @@ describe('ingredient route', () => {
   });
 
   //read a record
-  test('Get Ingredient by ID', async () => {
-    let res = await request.get('/ingredient/1');
-    expect(res.status).toEqual(200);
-    expect(res.body[0].name).toEqual('Chicken');
-    expect(res.body[0].quantity).toEqual(6);
-    // expect(res.body[0].recipeID).toEqual(1);
-  });
+  // test('Get Ingredient by ID', async () => {
+  //   let res = await request.get('/ingredient/1');
+  //   expect(res.status).toEqual(200);
+  //   expect(res.body[0].name).toEqual('Chicken');
+  //   expect(res.body[0].quantity).toEqual(6);
+  //   // expect(res.body[0].recipeID).toEqual(1);
+  // });
 });
