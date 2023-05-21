@@ -16,7 +16,8 @@ module.exports = (sequelizeDB, DataTypes) => {
     },
     recipeId: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
     },
   });
 };
+

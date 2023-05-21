@@ -27,7 +27,7 @@ router.post('/ingredient', async (req, res, next) => {
 
 //Update a record
 router.put('/ingredient/:id', async (req, res, next) => {
-  await ingredient.update(res.body,req.params.id);
+  await ingredient.update(res.body, req.params.id);
   let returnUpdatedDB = await ingredient.find(req.params.id);
 
   res.status(200).send(returnUpdatedDB);
@@ -36,7 +36,7 @@ router.put('/ingredient/:id', async (req, res, next) => {
 //Delete a record
 router.delete('/ingredient/:id', async (req, res, next) => {
   ingredient.delete(req.params.id);
-  let returnDeleted = await ingredient.find(req.params.id);
+  let returnDeleted = await ingredient.find();
 
   res.status(200).send(returnDeleted);
 });

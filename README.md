@@ -59,6 +59,7 @@ You should verify that only the fields you define get saved as a record.
 ### Collaborators
 
 Referenced Ryan Gallaway's Demo Code
+Help on associations from Aaron Imbrock
 
 ### Setup
 
@@ -94,4 +95,4 @@ To Run tests, run the command npm test
 
 #### UML
 
-![Lab 2 UML](./assets/lab2-uml.png)
+![Lab UML](./assets/uml.png)

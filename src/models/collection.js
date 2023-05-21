@@ -19,12 +19,39 @@ class Collection {
   async find(params) {
     try {
       if (params) {
-        let record = await this.model.findAll({ where: { id: params } });
+        let record = await this.model.findByPk(params);
         return record;
       } else {
         let records = await this.model.findAll();
         return records;
       }
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  }
+
+  async findAllWith(model){
+    try {
+      let record = await this.model.findAll({include: {
+        model: model,
+      },
+      });
+      return record;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  }
+
+  async findOneWith(params, model){
+    try {
+      let record = await this.model.findAll({
+        where: {id: params},
+        include: {model: model},
+      });
+      return record;
+
     } catch (error) {
       console.error(error);
       return error;
