@@ -12,11 +12,18 @@ const sequelizeDatabase = new Sequelize(DB_URL);
 const recipeModel = recipe(sequelizeDatabase, DataTypes);
 const ingredientModel = ingredient(sequelizeDatabase, DataTypes);
 
-recipeModel.hasMany(ingredientModel);
-ingredientModel.belongsTo(recipeModel);
+recipeModel.hasMany(ingredientModel,{
+  foreignKey: 'recipeId',
+  sourceKey: 'id',
+});
+ingredientModel.belongsTo(recipeModel, {
+  foreignKey: 'recipeId',
+  targetKey: 'id',
+});
 
 module.exports = {
   sequelizeDatabase,
   recipe: new Collection(recipeModel),
+  ingredientModel,
   ingredient: new Collection(ingredientModel),
 };
