@@ -27,7 +27,7 @@ router.post('/ingredient', async (req, res, next) => {
 
 //Update a record
 router.put('/ingredient/:id', async (req, res, next) => {
-  await ingredient.update(res.body, req.params.id);
+  await ingredient.update(req.body, req.params.id);
   let returnUpdatedDB = await ingredient.find(req.params.id);
 
   res.status(200).send(returnUpdatedDB);
