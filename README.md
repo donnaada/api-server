@@ -52,7 +52,7 @@ You should verify that only the fields you define get saved as a record.
 
 ### Links and Resources
 
-- [GitHub Actions ci/cd](https://github.com/donnaada/basic-express-server/actions)
+- [GitHub Actions ci/cd](https://github.com/donnaada/api-server/actions)
 - [back-end server url](https://api-server-6a4s.onrender.com)
 -
 
